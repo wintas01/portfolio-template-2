@@ -257,6 +257,9 @@ footer{margin-top:16vh;display:flex;justify-content:space-between;flex-wrap:wrap
     <span class="l1">EXPLORE MY</span>
     <span class="l2">PORTFOLIO</span>
   </h1>
+  <!-- PORTRAIT: to use your own photo, replace this whole <svg>...</svg> block with:
+       <img class="portrait" id="portrait" src="images/me.png" alt="Your Name">
+       (a PNG with the background removed looks best) -->
   <svg class="portrait" id="portrait" viewBox="0 0 400 420" aria-hidden="true">
     <defs>
       <radialGradient id="rim" cx="50%" cy="30%" r="70%"><stop offset="0" stop-color="#1c1c1c"/><stop offset=".6" stop-color="#0a0a0a"/><stop offset="1" stop-color="#030303"/></radialGradient>
@@ -382,7 +385,7 @@ footer{margin-top:16vh;display:flex;justify-content:space-between;flex-wrap:wrap
 <section id="contact">
   <div class="kicker reveal">Got a project in mind?</div>
   <h2 class="scan reveal">Let's talk</h2>
-  <a class="mail reveal" href="#contact">hello@yourname.com</a>
+  <a class="mail reveal" href="mailto:hello@yourname.com">hello@yourname.com</a>
   <div class="btns reveal"><a href="#contact" class="btn-w">Start a project</a><a href="#projects" class="btn-o">View work</a></div>
   <footer><span>© 2026 Echo — Your Name</span><span id="clock"></span><span>Built with intention</span></footer>
 </section>
@@ -440,7 +443,7 @@ $$('#heroTitle span').forEach((line,li)=>{
   line.innerHTML=[...line.textContent].map((c,i)=>c===' '?' ':`<span class="ch" style="transition-delay:${(li*6+i)*45}ms">${c}</span>`).join('');
 });
 // curly hair
-const hair=$('#hair');{let s='';
+const hair=$('#hair');if(hair){let s='';
   for(let i=0;i<90;i++){const a=Math.PI*(.92+Math.random()*1.16),r=36+Math.random()*34;
     const x=200+Math.cos(a)*r*1.12,y=128+Math.sin(a)*r*1.05;s+=`<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${(11+Math.random()*11).toFixed(1)}"/>`}
   s+='<ellipse cx="200" cy="122" rx="66" ry="52"/>';
@@ -516,6 +519,9 @@ function scramble(el){
 }
 
 /* ================= RING (landing pages) ================= */
+// EDIT: your landing pages / projects.
+// To use a real screenshot, add img:'images/your-file.jpg' to an entry — it replaces the drawn preview.
+// Example: {name:'My Shop', type:'E-commerce site', img:'images/my-shop.jpg', link:'https://myshop.com'},
 const pages=[
   {cls:'m-cafe',name:'Café Story',type:'Restaurant landing page',html:`<div class="door" style="left:58%"></div><div class="door" style="left:74%"></div><div class="lamp" style="left:52%"></div><div class="lamp" style="left:70%"></div><div class="plant" style="left:46%;top:44%;width:16%;height:36%"></div><div class="plant" style="left:86%;top:40%;width:14%;height:40%"></div><div class="tbl" style="left:50%;width:18%"></div><div class="tbl" style="left:72%;width:16%"></div><div class="shade"></div><div class="nb"><span>Café Story</span><span>Menu · Visit · Book</span></div><div class="t">Where<br>Every <i>Sip</i><br>tells a Story.</div><div class="s">Specialty coffee, slow mornings and a table waiting for you.</div>`},
   {cls:'m-echo',name:'Echo Studio',type:'Design studio',html:`<svg viewBox="0 0 400 250" preserveAspectRatio="none">${Array.from({length:14},(_,i)=>`<path d="M0 ${150+i*3} C80 ${110+i*4} 140 ${200-i*3} 220 ${140+i*2} S330 ${90+i*5} 400 ${120+i*3}" stroke="rgba(${200+i*4},${40+i*3},${50},${.25+i*.04})" fill="none" stroke-width="1"/>`).join('')}</svg><div class="nb"><span></span><span>Work · Studio · Contact</span></div><div class="t">ECHO</div><div class="r">BEYOND DESIGN<br>BUILT TO MATTER</div><div class="s">We craft brands, websites and digital experiences designed with purpose, clarity and impact.</div>`},
@@ -533,7 +539,10 @@ function buildRing(){
   R=(PW/2)/Math.tan(Math.PI/N)+6;
   $('.viewport3d').style.perspective=(R*1.25)+'px';
   if(!ringEl.children.length){
-    pages.forEach((p,i)=>{const d=document.createElement('div');d.className='lp';d.innerHTML=`<div class="m ${p.cls}">${p.html}</div>`;ringEl.appendChild(d)});
+    pages.forEach((p,i)=>{const d=document.createElement('div');d.className='lp';
+      d.innerHTML=p.img?`<img src="${p.img}" alt="${p.name}" style="width:100%;height:100%;object-fit:cover;display:block">`:`<div class="m ${p.cls}">${p.html}</div>`;
+      if(p.link){d.style.cursor='pointer';d.addEventListener('click',()=>{location.href=p.link})}
+      ringEl.appendChild(d)});
   }
   [...ringEl.children].forEach((d,i)=>{
     d.style.width=PW+'px';d.style.height=PH+'px';d.style.marginLeft=(-PW/2)+'px';d.style.marginTop=(-PH/2)+'px';
