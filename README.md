@@ -1,5 +1,7 @@
 # Portfolio Template 2 — ECHO 🎬
 
+🔗 **Live demo:** https://wintas01.github.io/portfolio01/templates/echo/
+
 A cinematic, scroll-driven portfolio that feels like watching a film. It's **one single file** (`index.html`), so you don't need to install anything, and you don't need to know React or any framework.
 
 **What happens as you scroll**
