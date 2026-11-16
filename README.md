@@ -120,4 +120,17 @@ Go to [app.netlify.com/drop](https://app.netlify.com/drop) and drag your project
 
 ---
 
+## 💬 Credit & custom websites
+
+This template was designed and built by **Wintas (Nnanna Okechukwu)**. The small credit bar at the very bottom of the page links back to me. It's appreciated if you keep it.
+
+Want a **custom website** built for you or your business? Get in touch:
+
+- 💬 **WhatsApp:** [+234 708 306 6127](https://wa.me/2347083066127)
+- ✉️ **Email:** nnannaokechukwu1@gmail.com
+- 𝕏 **X:** [@wintasblog](https://x.com/wintasblog)
+- 🌐 **Portfolio:** [wintas01.github.io/portfolio01](https://wintas01.github.io/portfolio01/)
+
+---
+
 Free to use for your personal portfolio. If it helps you, a ⭐ on the repo is appreciated!
